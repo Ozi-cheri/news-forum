@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News List</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>News Forum</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/news/create/">Create News</a>
+        </nav>
+    </header>
+    <section>
+        <h2>Latest News</h2>
+        <ul>
+            {% for article in articles %}
+                <li>
+                    <h3>{{ article.title }}</h3>
+                    <p>{{ article.content|truncatewords:30 }}</p>
+                    <a href="{% url 'news:detail' article.id %}">Read more...</a>
+                </li>
+            {% empty %}
+                <p>No news articles available at the moment.</p>
+            {% endfor %}
+        </ul>
+    </section>
+</body>
+</html>
