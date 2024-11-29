@@ -16,19 +16,20 @@
         </nav>
     </header>
     <section>
-        <h2>Latest News</h2>
-        <ul>
-            {% for news in news_list %}
-            <li>
-                <h3>{{ news.title }}</h3>
-                <p>{{ news.content }}</p>
-                <small>Published on: {{ news.published_date }}</small>
-            </li>
-            {% empty %}
-            <p>No news articles available at the moment.</p>
-            {% endfor %}
-        </ul>
+        <h2>News List</h2>
+        {% if news_items %}
+            <ul>
+                {% for news in news_items %}
+                    <li>
+                        <h3>{{ news.title }}</h3>
+                        <p>{{ news.content|truncatewords:20 }}</p>
+                        <small>Published on {{ news.published_date }}</small>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No news articles are available yet. Check back soon!</p>
+        {% endif %}
     </section>
-</main>
 </body>
 </html>
