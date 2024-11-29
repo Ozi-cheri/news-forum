@@ -16,8 +16,19 @@
         </nav>
     </header>
     <section>
-        <h2>News List</h2>
-        <p>No news articles are available yet. Check back soon!</p>
+        <h2>Latest News</h2>
+        <ul>
+            {% for news in news_list %}
+            <li>
+                <h3>{{ news.title }}</h3>
+                <p>{{ news.content }}</p>
+                <small>Published on: {{ news.published_date }}</small>
+            </li>
+            {% empty %}
+            <p>No news articles available at the moment.</p>
+            {% endfor %}
+        </ul>
     </section>
+</main>
 </body>
 </html>
