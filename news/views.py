@@ -13,5 +13,5 @@ def news_list(request):
     return render(request, 'news/news_list.html', {
         'news_items': page_obj.object_list,
         'has_next_page': page_obj.has_next(),
-        'page_obj': page_obj,
+        'current_page': page_obj.number,
     })
