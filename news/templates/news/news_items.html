@@ -1,0 +1,7 @@
+{% for news in news_items %}
+<li class="list-group-item mb-3">
+    <h3>{{ news.title }}</h3>
+    <p>{{ news.content|truncatewords:20 }}</p>
+    <small class="text-muted">Published on {{ news.published_date }}</small>
+</li>
+{% endfor %}

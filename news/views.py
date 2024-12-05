@@ -10,8 +10,13 @@ def news_list(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest': 
+        return render(request, 'news/news_items.html', {
+            'news_items': page_obj.object_list,
+        })
+
     return render(request, 'news/news_list.html', {
         'news_items': page_obj.object_list,
         'has_next_page': page_obj.has_next(),
-        'current_page': page_obj.number,
+        
     })
