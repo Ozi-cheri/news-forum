@@ -11,25 +11,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     'X-Requested-With': 'XMLHttpRequest',
                 },
             })
-                .then((response) => response.text())
+                .then((response) => response.json())
                 .then((data) => {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(data, 'text/html');
-                    const newItems = doc.querySelectorAll('#news-list li');
                     const newsList = document.getElementById('news-list');
+                    const parser = new DOMParser();
+                    const newItems = parser.parseFromString(data.html, 'text/html').querySelectorAll('#news-list li');
 
+                    
                     newItems.forEach((item) => {
                         newsList.appendChild(item);
                     });
 
-                    const newLoadMoreBtn = doc.querySelector('#load-more-btn');
-                    if (!newLoadMoreBtn) {
+                    
+                    if (!data.has_next_page) {
                         loadMoreBtn.style.display = 'none';
                     }
                 })
-                .catch((error) =>
-                    console.error('Error fetching more news:', error)
-                );
+                .catch((error) => {
+                    console.error('Error loading more news:', error);
+                });
         });
     }
 });
