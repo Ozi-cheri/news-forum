@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home - News Forum
+{% endblock %}
+
+{% block content %}
+    <section class="welcome-section">
+        <div class="container">
+            <h1>Welcome to News Forum!</h1>
+            <p>News Forum is your go-to platform for the latest news, insightful articles, and vibrant discussions. Join us to stay informed and engaged with the world around you.</p>
+            <p>Whether you're here to share your thoughts, read breaking stories, or connect with others, we've got you covered.</p>
+            <div class="auth-buttons">
+                <a href="{% url 'news:signup' %}" class="btn">Sign Up</a>
+                <a href="{% url 'news:login' %}" class="btn">Login</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 News Forum. All rights reserved.</p>
+            <ul class="social-links">
+                <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+                <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+                <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
+            </ul>
+        </div>
+    </footer>
+{% endblock %}
